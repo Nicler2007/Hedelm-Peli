@@ -1,17 +1,31 @@
+<!DOCTYPE html>
 <html lang="fi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hedelmä-peli</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Hedelmäpeli</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-<h1><strong>HEDELMÄPELI</strong></h1>
+  <h1>Hedelmäpeli</h1>
 
+  <div>Rahaa: <span id="raha">100</span>€</div>
 
+  <label>
+    Panos:
+    <input type="number" id="panos" value="1" min="1" max="10" />
+  </label>
 
-<script src="main.js"></script>
+  <div id="rullat">
+    <div class="rulla" onclick="lukitseRulla(0)">?</div>
+    <div class="rulla" onclick="lukitseRulla(1)">?</div>
+    <div class="rulla" onclick="lukitseRulla(2)">?</div>
+    <div class="rulla" onclick="lukitseRulla(3)">?</div>
+  </div>
 
+  <button onclick="pelaa()">Pelaa</button>
+
+  <div id="viesti"></div>
+
+  <script src="main.js"></script>
 </body>
 </html>
