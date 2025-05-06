@@ -77,7 +77,7 @@ function pelaa() {
   raha += voitto;
 
   lukitut = [false, false, false, false];
-  paivitaUI(voitto);
+  paivitaUI(voitto, true);
 }
 
 function lukitseRulla(index) {
@@ -95,7 +95,7 @@ function lukitseRulla(index) {
     lukitusvarasto++;
   }
 
-  paivitaUI(0);
+  paivitaUI(0, false);
 }
 
 function ostaLukitus() {

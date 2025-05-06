@@ -50,7 +50,7 @@ animation: pyoritus 0.5s;
 
 
 #pelaa-nappi {
-padding: 15px 40px;
+padding: 20px 60px;
 font-size: 20px;
 background-color: #4CAF50;
 color: white;
@@ -62,7 +62,7 @@ transition: background-color 0.3s ease;
 }
 
 #pelaa-nappi:hover {
-background-color: #45a049;
+background-color: #1e7523;
 }
 
 
