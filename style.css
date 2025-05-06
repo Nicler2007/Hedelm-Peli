@@ -4,31 +4,74 @@ body {
     text-align: center;
     background-color: #f0f8ff;
     padding: 20px;
-  }
-  
-  #rullat {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
-  
-  .rulla {
-    width: 80px;
-    height: 80px;
-    border: 2px solid #333;
-    margin: 0 10px;
-    font-size: 30px;
-    line-height: 80px;
-    cursor: pointer;
-    user-select: none;
-  }
-  
-  .rulla.lukittu {
-    background-color: #ffd700;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-  }
-  
+}
+
+.status {
+display: flex;
+justify-content: center;
+gap: 2rem;
+margin-bottom: 10px;
+}
+
+#rullat {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 15px;
+justify-content: center;
+margin: 20px auto;
+max-width: 500px;
+}
+
+.rulla-alue {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.rulla {
+width: 80px;
+height: 80px;
+border: 2px solid #333;
+font-size: 30px;
+line-height: 80px;
+margin-bottom: 5px;
+transition: transform 0.3s ease;
+}
+
+.rulla.animoi {
+animation: pyoritus 0.5s;
+}
+
+@keyframes pyoritus {
+0%   { transform: rotateX(0deg); }
+50%  { transform: rotateX(180deg); }
+100% { transform: rotateX(360deg); }
+}
+
+
+#pelaa-nappi {
+padding: 15px 40px;
+font-size: 20px;
+background-color: #4CAF50;
+color: white;
+border: none;
+border-radius: 10px;
+margin: 20px auto;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+#pelaa-nappi:hover {
+background-color: #45a049;
+}
+
+
+button {
+padding: 5px 10px;
+font-size: 14px;
+cursor: pointer;
+}
+
+button:disabled {
+opacity: 0.5;
+}

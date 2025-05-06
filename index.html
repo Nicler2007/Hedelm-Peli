@@ -8,23 +8,42 @@
 <body>
   <h1>Hedelmäpeli</h1>
 
-  <div>Rahaa: <span id="raha">100</span>€</div>
+  <div class="status">
+    <div>💰 Rahaa: <span id="raha">150</span>€</div>
+    <div>🔒 Lukituksia: <span id="lukituksia">5</span> kpl</div>
+  </div>
 
   <label>
     Panos:
     <input type="number" id="panos" value="1" min="1" max="10" />
   </label>
 
-  <div id="rullat">
-    <div class="rulla" onclick="lukitseRulla(0)">?</div>
-    <div class="rulla" onclick="lukitseRulla(1)">?</div>
-    <div class="rulla" onclick="lukitseRulla(2)">?</div>
-    <div class="rulla" onclick="lukitseRulla(3)">?</div>
+  <div id="rullat" class="rullat">
+    <!-- Rullat ja niiden lukitusnapit -->
+    <div class="rulla-alue">
+      <div class="rulla">?</div>
+      <button onclick="lukitseRulla(0)">🔒</button>
+    </div>
+    <div class="rulla-alue">
+      <div class="rulla">?</div>
+      <button onclick="lukitseRulla(1)">🔒</button>
+    </div>
+    <div class="rulla-alue">
+      <div class="rulla">?</div>
+      <button onclick="lukitseRulla(2)">🔒</button>
+    </div>
+    <div class="rulla-alue">
+      <div class="rulla">?</div>
+      <button onclick="lukitseRulla(3)">🔒</button>
+    </div>
   </div>
 
-  <button onclick="pelaa()">Pelaa</button>
+  <button id="pelaa-nappi" onclick="pelaa()">🎰 Pelaa</button>
 
   <div id="viesti"></div>
+
+  <h2>Kauppa 🛒</h2>
+  <button onclick="ostaLukitus()">Osta 1 lukitus (5€)</button>
 
   <script src="main.js"></script>
 </body>
