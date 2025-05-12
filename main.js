@@ -5,7 +5,14 @@ let panos = 1;
 let lukitusvarasto = 5;
 const maxPanos = 10;
 
-const kuvat = ['🍎', '🍐', '🍒', '🍉', '7️⃣'];
+const kuvat = [
+  '<img src="img/Kello.png" alt="Kello">',
+  '<img src="img/Diamond.png" alt="Timantti">',
+  '<img src="img/Seiska.png" alt="7">',
+  '<img src="img/Kolikko.png" alt="Kolikko">',
+  '<img src="img/Omena.png" alt="Omena">'
+];
+
 let rullat = ["", "", "", ""];
 let lukitut = [false, false, false, false];
 
@@ -39,7 +46,7 @@ function paivitaUI(voitto, animaatio = false) {
   
     const rullaDivit = document.querySelectorAll(".rulla");
     rullaDivit.forEach((div, i) => {
-      div.textContent = rullat[i];
+      div.innerHTML = rullat[i];
       
       // Vain jos pyöritys halutaan (animaatio true)
       if (animaatio) {

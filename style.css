@@ -38,6 +38,13 @@ margin-bottom: 5px;
 transition: transform 0.3s ease;
 }
 
+.rulla img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
 .rulla.animoi {
 animation: pyoritus 0.5s;
 }
