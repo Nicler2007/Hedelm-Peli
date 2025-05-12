@@ -1,5 +1,4 @@
 
-
 let raha = 150;
 let panos = 1;
 let lukitusvarasto = 5;
@@ -29,41 +28,44 @@ function laskeVoitto() {
   const laskuri = {};
   rullat.forEach(k => laskuri[k] = (laskuri[k] || 0) + 1);
 
-  if (laskuri['7️⃣'] === 4) return 10 * panos;
-  if (laskuri['🍎'] === 4) return 6 * panos;
-  if (laskuri['🍉'] === 4) return 5 * panos;
-  if (laskuri['🍐'] === 4) return 4 * panos;
-  if (laskuri['🍒'] === 4) return 3 * panos;
-  if (laskuri['7️⃣'] === 3) return 5 * panos;
+  if (laskuri[kuvat[2]] === 4) return 10 * panos; // seiska
+  if (laskuri[kuvat[4]] === 4) return 6 * panos;  // omena
+  if (laskuri[kuvat[0]] === 4) return 5 * panos;  // kello
+  if (laskuri[kuvat[3]] === 4) return 4 * panos;  // kolikko
+  if (laskuri[kuvat[1]] === 4) return 3 * panos;  // timantti
+  if (laskuri[kuvat[2]] === 3) return 5 * panos;  // 3 seiskaa
 
   return 0;
 }
 
 function paivitaUI(voitto, animaatio = false) {
-    document.getElementById("raha").textContent = raha;
-    document.getElementById("lukituksia").textContent = lukitusvarasto;
-    const viesti = document.getElementById("viesti");
-  
-    const rullaDivit = document.querySelectorAll(".rulla");
-    rullaDivit.forEach((div, i) => {
-      div.innerHTML = rullat[i];
-      
-      // Vain jos pyöritys halutaan (animaatio true)
-      if (animaatio) {
-        div.classList.remove("animoi");
-        void div.offsetWidth; // resetoi animaation
-        div.classList.add("animoi");
-      }
-  
-      if (lukitut[i]) {
-        div.style.backgroundColor = "#ffd700";
-      } else {
-        div.style.backgroundColor = "";
-      }
-    });
-  
-    viesti.textContent = voitto > 0 ? `Voitit ${voitto}€!` : "Ei voittoa.";
-  }
+  document.getElementById("raha").textContent = raha;
+  document.getElementById("lukituksia").textContent = lukitusvarasto;
+  const viesti = document.getElementById("viesti");
+
+  const rullaDivit = document.querySelectorAll(".rulla");
+  const lukitusnapit = document.querySelectorAll(".lukitusnappi");
+
+  rullaDivit.forEach((div, i) => {
+    div.innerHTML = rullat[i];
+
+    if (animaatio) {
+      div.classList.remove("animoi");
+      void div.offsetWidth;
+      div.classList.add("animoi");
+    }
+
+    if (lukitut[i]) {
+      div.classList.add("lukittu");
+      lukitusnapit[i].textContent = "🔒";
+    } else {
+      div.classList.remove("lukittu");
+      lukitusnapit[i].textContent = "🔓";
+    }
+  });
+
+  viesti.textContent = voitto > 0 ? `Voitit ${voitto}€!` : "Ei voittoa.";
+}
 
 function pelaa() {
   panos = parseInt(document.getElementById("panos").value);
@@ -93,14 +95,8 @@ function lukitseRulla(index) {
     return;
   }
 
-  // Toggle lukitus
   lukitut[index] = !lukitut[index];
-
-  if (lukitut[index]) {
-    lukitusvarasto--;
-  } else {
-    lukitusvarasto++;
-  }
+  lukitusvarasto += lukitut[index] ? -1 : 1;
 
   paivitaUI(0, false);
 }
